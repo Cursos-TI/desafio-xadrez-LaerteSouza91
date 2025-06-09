@@ -1,32 +1,46 @@
 #include <stdio.h>
 
-// Desafio de Xadrez - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
-// O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
-
 int main() {
-    // Nível Novato - Movimentação das Peças
-    // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
+    int linhaAtual = 0, colunaAtual = 0;
+    int novaLinha, novaColuna;
+    int i, j;
 
-    // Implementação de Movimentação do Bispo
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação do Bispo em diagonal.
+    printf("=== Movimento da Torre no Xadrez (Tabuleiro 8x8) ===\n");
+    printf("A torre começa na posição (0,0)\n");
 
-    // Implementação de Movimentação da Torre
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Torre para a direita.
+    while (1) {
+        // Mostrar o tabuleiro
+        for (i = 0; i < 8; i++) {
+            for (j = 0; j < 8; j++) {
+                if (i == linhaAtual && j == colunaAtual) {
+                    printf(" T ");
+                } else {
+                    printf(" . ");
+                }
+            }
+            printf("\n");
+        }
 
-    // Implementação de Movimentação da Rainha
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Rainha para a esquerda.
+        // Solicitar nova posição
+        printf("\nDigite a nova posição da torre (linha coluna, de 0 a 7): ");
+        scanf("%d %d", &novaLinha, &novaColuna);
 
-    // Nível Aventureiro - Movimentação do Cavalo
-    // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
-    // Um loop pode representar a movimentação horizontal e outro vertical.
+        // Verificar limites do tabuleiro
+        if (novaLinha < 0 || novaLinha > 7 || novaColuna < 0 || novaColuna > 7) {
+            printf("Posição fora do tabuleiro. Encerrando...\n");
+            break;
+        }
 
-    // Nível Mestre - Funções Recursivas e Loops Aninhados
-    // Sugestão: Substitua as movimentações das peças por funções recursivas.
-    // Exemplo: Crie uma função recursiva para o movimento do Bispo.
+        // Verificar se o movimento é válido para a torre
+        if (novaLinha == linhaAtual || novaColuna == colunaAtual) {
+            linhaAtual = novaLinha;
+            colunaAtual = novaColuna;
+        } else {
+            printf("Movimento inválido para a torre! Tente novamente.\n");
+        }
 
-    // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
-    // Inclua o uso de continue e break dentro dos loops.
+        printf("\n");
+    }
 
     return 0;
 }
